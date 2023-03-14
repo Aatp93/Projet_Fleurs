@@ -16,37 +16,22 @@ class Panier
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?float $prix = null;
-
-    #[ORM\Column]
     private ?int $quantite = null;
 
-    #[ORM\ManyToMany(targetEntity: Graine::class, inversedBy: 'paniers')]
-    private Collection $graine;
+    #[ORM\Column]
+    private ?float $prix = null;
 
-    #[ORM\ManyToOne(inversedBy: 'paniers')]
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?graine $graine = null;
+
+    #[ORM\ManyToOne(inversedBy: 'panier')]
     private ?Commande $commande = null;
 
-    public function __construct()
-    {
-        $this->graine = new ArrayCollection();
-    }
+
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getPrix(): ?float
-    {
-        return $this->prix;
-    }
-
-    public function setPrix(float $prix): self
-    {
-        $this->prix = $prix;
-
-        return $this;
     }
 
     public function getQuantite(): ?int
@@ -61,26 +46,26 @@ class Panier
         return $this;
     }
 
-    /**
-     * @return Collection<int, Graine>
-     */
-    public function getGraine(): Collection
+    public function getPrix(): ?float
     {
-        return $this->graine;
+        return $this->prix;
     }
 
-    public function addGraine(Graine $graine): self
+    public function setPrix(float $prix): self
     {
-        if (!$this->graine->contains($graine)) {
-            $this->graine->add($graine);
-        }
+        $this->prix = $prix;
 
         return $this;
     }
 
-    public function removeGraine(Graine $graine): self
+    public function getGraine(): ?graine
     {
-        $this->graine->removeElement($graine);
+        return $this->graine;
+    }
+
+    public function setGraine(?graine $graine): self
+    {
+        $this->graine = $graine;
 
         return $this;
     }
@@ -96,4 +81,11 @@ class Panier
 
         return $this;
     }
+
+    
+
+   
+
+
+
 }

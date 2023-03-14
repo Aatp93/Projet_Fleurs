@@ -16,7 +16,7 @@ class Actualite
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 50000)]
+    #[ORM\Column(length: 5000)]
     private ?string $description = null;
 
     #[ORM\Column(length: 500)]

@@ -19,15 +19,20 @@ class Commande
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'commandes')]
-    private ?User $utilisateur = null;
+    private ?user $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Panier::class)]
-    private Collection $paniers;
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: panier::class)]
+    private Collection $panier;
 
     public function __construct()
     {
-        $this->paniers = new ArrayCollection();
+        $this->panier = new ArrayCollection();
     }
+
+   
+
+
+
 
     public function getId(): ?int
     {
@@ -46,39 +51,39 @@ class Commande
         return $this;
     }
 
-    public function getUtilisateur(): ?User
+    public function getUser(): ?user
     {
-        return $this->utilisateur;
+        return $this->user;
     }
 
-    public function setUtilisateur(?User $utilisateur): self
+    public function setUser(?user $user): self
     {
-        $this->utilisateur = $utilisateur;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Panier>
+     * @return Collection<int, panier>
      */
-    public function getPaniers(): Collection
+    public function getPanier(): Collection
     {
-        return $this->paniers;
+        return $this->panier;
     }
 
-    public function addPanier(Panier $panier): self
+    public function addPanier(panier $panier): self
     {
-        if (!$this->paniers->contains($panier)) {
-            $this->paniers->add($panier);
+        if (!$this->panier->contains($panier)) {
+            $this->panier->add($panier);
             $panier->setCommande($this);
         }
 
         return $this;
     }
 
-    public function removePanier(Panier $panier): self
+    public function removePanier(panier $panier): self
     {
-        if ($this->paniers->removeElement($panier)) {
+        if ($this->panier->removeElement($panier)) {
             // set the owning side to null (unless already changed)
             if ($panier->getCommande() === $this) {
                 $panier->setCommande(null);
@@ -87,4 +92,7 @@ class Commande
 
         return $this;
     }
+
+   
+
 }

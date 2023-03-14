@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\GraineRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GraineRepository::class)]
@@ -24,19 +22,13 @@ class Graine
     #[ORM\Column(length: 255)]
     private ?string $couleur = null;
 
-    #[ORM\Column(length: 500)]
+    #[ORM\Column(length: 5000)]
     private ?string $img = null;
 
     #[ORM\Column]
     private ?float $prix = null;
 
-    #[ORM\ManyToMany(targetEntity: Panier::class, mappedBy: 'graine')]
-    private Collection $paniers;
-
-    public function __construct()
-    {
-        $this->paniers = new ArrayCollection();
-    }
+  
 
     public function getId(): ?int
     {
@@ -99,33 +91,6 @@ class Graine
     public function setPrix(float $prix): self
     {
         $this->prix = $prix;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Panier>
-     */
-    public function getPaniers(): Collection
-    {
-        return $this->paniers;
-    }
-
-    public function addPanier(Panier $panier): self
-    {
-        if (!$this->paniers->contains($panier)) {
-            $this->paniers->add($panier);
-            $panier->addGraine($this);
-        }
-
-        return $this;
-    }
-
-    public function removePanier(Panier $panier): self
-    {
-        if ($this->paniers->removeElement($panier)) {
-            $panier->removeGraine($this);
-        }
 
         return $this;
     }

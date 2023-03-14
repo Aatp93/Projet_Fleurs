@@ -39,24 +39,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $adresse = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(length: 255)]
+    private ?string $ville = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateNaissance = null;
 
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Poste::class)]
-    private Collection $postes;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class)]
+    private Collection $commandes;
 
-    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Reserve::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reserve::class)]
     private Collection $reserves;
 
-    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Commande::class)]
-    private Collection $commandes;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Post::class)]
+    private Collection $posts;
+
+   
+
 
     public function __construct()
     {
-        $this->postes = new ArrayCollection();
-        $this->reserves = new ArrayCollection();
         $this->commandes = new ArrayCollection();
+        $this->reserves = new ArrayCollection();
+        $this->posts = new ArrayCollection();
+       
     }
+
+
+
 
     public function getId(): ?int
     {
@@ -164,6 +174,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
     public function getDateNaissance(): ?\DateTimeInterface
     {
         return $this->dateNaissance;
@@ -177,29 +199,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Poste>
+     * @return Collection<int, Commande>
      */
-    public function getPostes(): Collection
+    public function getCommandes(): Collection
     {
-        return $this->postes;
+        return $this->commandes;
     }
 
-    public function addPoste(Poste $poste): self
+    public function addCommande(Commande $commande): self
     {
-        if (!$this->postes->contains($poste)) {
-            $this->postes->add($poste);
-            $poste->setUser($this);
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes->add($commande);
+            $commande->setUser($this);
         }
 
         return $this;
     }
 
-    public function removePoste(Poste $poste): self
+    public function removeCommande(Commande $commande): self
     {
-        if ($this->postes->removeElement($poste)) {
+        if ($this->commandes->removeElement($commande)) {
             // set the owning side to null (unless already changed)
-            if ($poste->getUser() === $this) {
-                $poste->setUser(null);
+            if ($commande->getUser() === $this) {
+                $commande->setUser(null);
             }
         }
 
@@ -218,7 +240,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->reserves->contains($reserf)) {
             $this->reserves->add($reserf);
-            $reserf->setUtilisateur($this);
+            $reserf->setUser($this);
         }
 
         return $this;
@@ -228,8 +250,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->reserves->removeElement($reserf)) {
             // set the owning side to null (unless already changed)
-            if ($reserf->getUtilisateur() === $this) {
-                $reserf->setUtilisateur(null);
+            if ($reserf->getUser() === $this) {
+                $reserf->setUser(null);
             }
         }
 
@@ -237,32 +259,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Commande>
+     * @return Collection<int, Post>
      */
-    public function getCommandes(): Collection
+    public function getPosts(): Collection
     {
-        return $this->commandes;
+        return $this->posts;
     }
 
-    public function addCommande(Commande $commande): self
+    public function addPost(Post $post): self
     {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes->add($commande);
-            $commande->setUtilisateur($this);
+        if (!$this->posts->contains($post)) {
+            $this->posts->add($post);
+            $post->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeCommande(Commande $commande): self
+    public function removePost(Post $post): self
     {
-        if ($this->commandes->removeElement($commande)) {
+        if ($this->posts->removeElement($post)) {
             // set the owning side to null (unless already changed)
-            if ($commande->getUtilisateur() === $this) {
-                $commande->setUtilisateur(null);
+            if ($post->getUser() === $this) {
+                $post->setUser(null);
             }
         }
 
         return $this;
     }
+
 }

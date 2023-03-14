@@ -19,22 +19,25 @@ class Atelier
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 500)]
-    private ?string $description = null;
-
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\Column(length: 500)]
-    private ?string $img = null;
-
-    #[ORM\OneToMany(mappedBy: 'Atelier', targetEntity: Reserve::class)]
+    #[ORM\OneToMany(mappedBy: 'atelier', targetEntity: Reserve::class)]
     private Collection $reserves;
+
+    #[ORM\Column(length: 5000)]
+    private ?string $description = null;
+
+    #[ORM\Column(length: 5000)]
+    private ?string $img = null;
 
     public function __construct()
     {
         $this->reserves = new ArrayCollection();
     }
+
+   
+
 
     public function getId(): ?int
     {
@@ -53,18 +56,6 @@ class Atelier
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
     public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
@@ -73,18 +64,6 @@ class Atelier
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
-
-        return $this;
-    }
-
-    public function getImg(): ?string
-    {
-        return $this->img;
-    }
-
-    public function setImg(string $img): self
-    {
-        $this->img = $img;
 
         return $this;
     }
@@ -118,4 +97,30 @@ class Atelier
 
         return $this;
     }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(string $img): self
+    {
+        $this->img = $img;
+
+        return $this;
+    }
+
+   
 }
