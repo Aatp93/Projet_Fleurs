@@ -19,9 +19,9 @@ class Commande
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'commandes')]
-    private ?user $user = null;
+    private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: panier::class)]
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Panier::class)]
     private Collection $panier;
 
     public function __construct()
@@ -51,12 +51,12 @@ class Commande
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
@@ -71,7 +71,7 @@ class Commande
         return $this->panier;
     }
 
-    public function addPanier(panier $panier): self
+    public function addPanier(Panier $panier): self
     {
         if (!$this->panier->contains($panier)) {
             $this->panier->add($panier);
@@ -81,7 +81,7 @@ class Commande
         return $this;
     }
 
-    public function removePanier(panier $panier): self
+    public function removePanier(Panier $panier): self
     {
         if ($this->panier->removeElement($panier)) {
             // set the owning side to null (unless already changed)

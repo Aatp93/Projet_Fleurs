@@ -17,10 +17,10 @@ class Post
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'posts')]
-    private ?user $user = null;
+    private ?User $user = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?actualite $actualite = null;
+    private ?Actualite $actualite = null;
 
     public function getId(): ?int
     {
@@ -39,24 +39,24 @@ class Post
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getActualite(): ?actualite
+    public function getActualite(): ?Actualite
     {
         return $this->actualite;
     }
 
-    public function setActualite(?actualite $actualite): self
+    public function setActualite(?Actualite $actualite): self
     {
         $this->actualite = $actualite;
 

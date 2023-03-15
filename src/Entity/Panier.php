@@ -22,9 +22,9 @@ class Panier
     private ?float $prix = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?graine $graine = null;
+    private ?Graine $graine = null;
 
-    #[ORM\ManyToOne(inversedBy: 'panier')]
+    #[ORM\ManyToOne(inversedBy: 'Panier')]
     private ?Commande $commande = null;
 
 
@@ -58,12 +58,12 @@ class Panier
         return $this;
     }
 
-    public function getGraine(): ?graine
+    public function getGraine(): ?Graine
     {
         return $this->graine;
     }
 
-    public function setGraine(?graine $graine): self
+    public function setGraine(?Graine $graine): self
     {
         $this->graine = $graine;
 

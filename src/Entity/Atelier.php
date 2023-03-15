@@ -22,7 +22,7 @@ class Atelier
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\OneToMany(mappedBy: 'atelier', targetEntity: Reserve::class)]
+    #[ORM\OneToMany(mappedBy: 'Atelier', targetEntity: Reserve::class)]
     private Collection $reserves;
 
     #[ORM\Column(length: 5000)]

@@ -17,10 +17,10 @@ class Reserve
     private ?int $quantite = null;
 
     #[ORM\ManyToOne(inversedBy: 'reserves')]
-    private ?atelier $atelier = null;
+    private ?Atelier $atelier = null;
 
     #[ORM\ManyToOne(inversedBy: 'reserves')]
-    private ?user $user = null;
+    private ?User $user = null;
 
  
     public function getId(): ?int
@@ -40,24 +40,24 @@ class Reserve
         return $this;
     }
 
-    public function getAtelier(): ?atelier
+    public function getAtelier(): ?Atelier
     {
         return $this->atelier;
     }
 
-    public function setAtelier(?atelier $atelier): self
+    public function setAtelier(?Atelier $atelier): self
     {
         $this->atelier = $atelier;
 
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
