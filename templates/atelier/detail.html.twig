@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{atelier.nom}}
+{% endblock %}
+
+{% block body %}
+
+	<h2>
+		{{atelier.nom}}
+		<h2>
+
+			<h3>
+				Details de l'atelier:
+			</h3>
+			<ul>
+				<li>
+					Nom :
+					{{atelier.nom}}</li>
+				<li>
+					Description:
+					{{atelier.description}}</li>
+				<li>
+					Date :
+					{{atelier.date|date('d-m-Y')}}</li>
+			</ul>
+
+		{% endblock %}

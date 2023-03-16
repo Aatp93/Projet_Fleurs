@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	{% for  graines in graine  %}
+		<h2>
+		<a href="{{ path('graine_detail' , {id:graines.id})}}"> {{graines.nom}} </a>
+			
+			<h2>
+				<h3>
+					Informations:
+				</h3>
+				<ul>
+					<li>
+						Nom :
+						{{graines.nom}}</li>
+					<li>
+						Poids :
+						{{graines.poid ~' '~ 'g'}}</li>
+					<li>
+						Couleur :
+						{{graines.couleur}}</li>
+					<li>
+						Prix:
+						{{graines.prix ~'€'}}</li>
+					<li>
+						Details:
+						{{graines.description}}</li>
+				</ul>
+
+			{% endfor %}
+		{% endblock %}

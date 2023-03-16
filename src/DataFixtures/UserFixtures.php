@@ -24,7 +24,7 @@ class UserFixtures extends Fixture
 
 
         $admin = new User();
-        $admin->setEmail('admin@dwwm.fr');
+        $admin->setEmail('admin@fleurs.fr');
         $admin->setNom('Toto');
         $admin->setPrenom('Tata');
         $admin->setAdresse('12 rue toto');

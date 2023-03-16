@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{graine.nom}}
+{% endblock %}
+
+ {% block body %}
+
+	<h2>
+	 {{graine.nom}}
+		<h2>
+
+					<h3>
+					Informations:
+					</h3>
+					<ul>
+						<li> Nom : {{graine.nom}}</li>
+                        <li> Poids : {{graine.poid ~' '~ 'g'}}</li>
+                        <li> Couleur : {{graine.couleur}}</li>
+                        <li> Prix: {{graine.prix ~'€'}}</li>
+                        <li> Details: {{graine.description}}</li>
+					</ul>
+
+				{% endblock %} 

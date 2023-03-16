@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Votre profil
+{% endblock %}
+
+{% block body %}
+
+	<h2>
+		Votre profil
+		<h2>
+
+			<h3>
+				Bienvenu
+				{{user.prenom}}
+				<h3>
+
+					<h3>
+						Mes informations:
+					</h3>
+					<ul>
+						<li>
+							Nom :
+							{{user.nom}}</li>
+						<li>
+							Prénom :
+							{{user.prenom}}</li>
+						<li>
+							Date de naissance :
+							{{user.dateNaissance|date('d-m-Y')}}</li>
+						<li>
+							Adresse :
+							{{user.adresse}}</li>
+						<li>
+							Ville:
+							{{user.ville}}</li>
+						<li>
+							E-mail:
+							{{user.email}}</li>
+						<li>
+							Mon statut  :
+							{{user.roles|join(',')}}</li>
+
+					</ul>
+
+				{% endblock %}

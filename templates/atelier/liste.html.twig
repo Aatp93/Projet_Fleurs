@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	{% for  ateliers in atelier  %}
+		<h2>
+			<a href="{{ path('atelier_detail' , {id:ateliers.id})}}">
+				{{ateliers.nom}}
+			</a>
+
+
+			<h2>
+				<h3>
+					Informations:
+				</h3>
+				<ul>
+					<li>
+						Nom :
+						{{ateliers.nom}}</li>
+					<li>
+						Date :
+						{{ateliers.date|date('d-m-Y')}}</li>
+
+					<li>
+						Details:
+						{{ateliers.description}}</li>
+				</ul>
+
+			{% endfor %}
+		{% endblock %}

@@ -28,6 +28,9 @@ class Graine
     #[ORM\Column]
     private ?float $prix = null;
 
+    #[ORM\Column(length: 500)]
+    private ?string $description = null;
+
   
 
     public function getId(): ?int
@@ -91,6 +94,18 @@ class Graine
     public function setPrix(float $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

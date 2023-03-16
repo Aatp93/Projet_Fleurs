@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{actualite.nom}}
+{% endblock %}
+
+{% block body %}
+
+	<h2>
+		{{actualite.nom}}
+		<h2>
+
+
+			<ul>
+				<li>
+					Nom :
+					{{actualite.nom}}</li>
+				<li>
+					Description:
+					{{actualite.description}}</li>
+
+			</ul>
+
+		{% endblock %}

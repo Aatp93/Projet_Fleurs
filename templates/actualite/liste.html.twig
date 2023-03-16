@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	{% for  actualites in actualite  %}
+
+
+		<ul>
+			<h2>
+				<li>
+
+
+					<a href="{{ path('actualite_detail', {id:actualites.id})}}">
+						{{actualites.nom}}
+					</a>
+				</li>
+			</h2>
+			<li>
+				Details:
+				{{actualites.description}}</li>
+		</ul>
+	{% endfor %}
+{% endblock %}
