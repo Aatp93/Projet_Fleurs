@@ -1,21 +1,31 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-	{% for  actualites in actualite  %}
 
+	<style>
 
-		<ul>
-			<h2>
-				<li>
+		img {
+			width: 555px;
+			height:250px;
+		}
 
+		
+	</style>
 
-					<a href="{{ path('actualite_detail', {id:actualites.id})}}">
-						{{actualites.nom}}
-					</a>
-				</li>
-			</h2>
+{% for  actualites in actualite  %}
+	<ul>
+		<h2>
 			<li>
-				Details:
-				{{actualites.description}}</li>
-		</ul>
-	{% endfor %}
-{% endblock %}
+
+
+				<a href="{{ path('actualite_detail', {id:actualites.id})}}">
+					{{actualites.nom}}</a>
+			</li>
+			<li>
+				<img src="{{ vich_uploader_asset(actualites, 'imageFile') }}" alt="{{ actualites.nom }}"/></li>
+		</a>
+	</li>
+</h2>
+<li>
+	Details:
+	{{actualites.description}}</li></ul>{% endfor %}
+	{% endblock %}

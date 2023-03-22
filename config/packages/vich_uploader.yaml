@@ -2,8 +2,8 @@ vich_uploader:
     db_driver: orm
 
     mappings:
-       products:
-           uri_prefix: /images/
+       images:
+           uri_prefix: /images
            upload_destination: '%kernel.project_dir%/public/images'
            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
            delete_on_remove: true #Pour enlever l'image quand on veut enlever l'entrée de la db 

@@ -20,7 +20,7 @@ class AtelierFixtures extends Fixture
         $atelier->setNom($faker->word());
         $atelier->setDate($faker->dateTime);
         $atelier->setDescription($faker->paragraph());
-        $atelier->setImg($faker->word() . '.jpeg');
+        $atelier->setImage('Atelier1.jpg');
         $manager->persist($atelier);
 
         }

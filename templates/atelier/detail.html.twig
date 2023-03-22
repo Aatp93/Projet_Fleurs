@@ -6,6 +6,15 @@
 
 {% block body %}
 
+
+	<style>
+
+		img {
+			width: 255px;
+			height: 300px;
+		}
+	</style>
+
 	<h2>
 		{{atelier.nom}}
 		<h2>
@@ -14,6 +23,8 @@
 				Details de l'atelier:
 			</h3>
 			<ul>
+				<li>Image :
+					<img src="{{ vich_uploader_asset(atelier, 'imageFile') }}" alt="{{ atelier.nom }}"/></li>
 				<li>
 					Nom :
 					{{atelier.nom}}</li>

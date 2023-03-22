@@ -1,9 +1,25 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+
+	<style>
+
+		img {
+			width: 155px;
+			height:155px;
+		}
+
+	</style>
+
+
+
+
+
 	{% for  graines in graine  %}
 		<h2>
-		<a href="{{ path('graine_detail' , {id:graines.id})}}"> {{graines.nom}} </a>
-			
+			<a href="{{ path('graine_detail' , {id:graines.id})}}">
+				{{graines.nom}}
+			</a>
+
 			<h2>
 				<h3>
 					Informations:
@@ -23,7 +39,11 @@
 						{{graines.prix ~'€'}}</li>
 					<li>
 						Details:
-						{{graines.description}}</li>
+						 {{graines.description}}</li>
+					
+						<li>Image : <img src="{{ vich_uploader_asset(graines, 'imageFile') }}" /></li>
+					
+						
 				</ul>
 
 			{% endfor %}
