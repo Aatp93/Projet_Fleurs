@@ -4,7 +4,10 @@ namespace App\Entity;
 
 use App\Repository\GraineRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: GraineRepository::class)]
 class Graine
 {
@@ -22,14 +25,23 @@ class Graine
     #[ORM\Column(length: 255)]
     private ?string $couleur = null;
 
+    #[Vich\UploadableField(mapping : 'images', fileNameProperty : 'image', size : 'imageSize')]
+    private ?File $imageFile = null;
+ 
     #[ORM\Column(length: 5000)]
-    private ?string $img = null;
+    public ?string $image = null;
 
     #[ORM\Column]
     private ?float $prix = null;
 
     #[ORM\Column(length: 500)]
     private ?string $description = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $ImageSize = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $createdAt = null;
 
   
 
@@ -74,14 +86,14 @@ class Graine
         return $this;
     }
 
-    public function getImg(): ?string
+    public function getImage(): ?string
     {
-        return $this->img;
+        return $this->image;
     }
 
-    public function setImg(string $img): self
+    public function setImage(string $image): self
     {
-        $this->img = $img;
+        $this->image = $image;
 
         return $this;
     }
@@ -109,4 +121,43 @@ class Graine
 
         return $this;
     }
+
+    public function getImageSize(): ?int
+    {
+        return $this->ImageSize;
+    }
+
+    public function setImageSize(?int $ImageSize): self
+    {
+        $this->ImageSize = $ImageSize;
+
+        return $this;
+    }
+    public function getImageFile(): ?File 
+    {
+        return $this->imageFile;
+    }
+
+
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+        if (null !== $imageFile) {
+            $this->createdAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
 }
+

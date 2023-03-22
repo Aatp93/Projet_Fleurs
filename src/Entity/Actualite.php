@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use App\Repository\ActualiteRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: ActualiteRepository::class)]
 class Actualite
 {
@@ -19,8 +21,17 @@ class Actualite
     #[ORM\Column(length: 5000)]
     private ?string $description = null;
 
+    #[Vich\UploadableField(mapping : 'images', fileNameProperty : 'image', size : 'imageSize')]
+    private ?File $imageFile = null;
+
     #[ORM\Column(length: 500)]
-    private ?string $img = null;
+    private ?string $image = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $imageSize = null;
 
     public function getId(): ?int
     {
@@ -51,15 +62,54 @@ class Actualite
         return $this;
     }
 
-    public function getImg(): ?string
+    public function getImage(): ?string
     {
-        return $this->img;
+        return $this->image;
     }
 
-    public function setImg(string $img): self
+    public function setImage(string $image): self
     {
-        $this->img = $img;
+        $this->image = $image;
 
         return $this;
     }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getImageSize(): ?int
+    {
+        return $this->imageSize;
+    }
+
+    public function setImageSize(?int $imageSize): self
+    {
+        $this->imageSize = $imageSize;
+
+        return $this;
+    }
+
+    public function getImageFile(): ?File 
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+        if (null !== $imageFile) {
+            $this->createdAt = new \DateTimeImmutable();
+        }
+    }
+
+
 }

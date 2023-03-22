@@ -20,7 +20,7 @@ class ActualiteFixtures extends Fixture
         $actualite = new Actualite();
         $actualite->setNom($faker->word());
         $actualite->setDescription($faker->paragraph());
-        $actualite->setImg($faker->word() . '.jpeg');
+        $actualite->setImage('atelier2.jpg');
         $manager->persist($actualite);
 
         }

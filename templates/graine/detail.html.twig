@@ -4,21 +4,44 @@
 	{{graine.nom}}
 {% endblock %}
 
- {% block body %}
+{% block body %}
+	<style>
+
+		img {
+			width: 255px;
+			height:300px;
+		}
+
+		
+	</style>
+
 
 	<h2>
-	 {{graine.nom}}
+		{{graine.nom}}
 		<h2>
 
-					<h3>
-					Informations:
-					</h3>
-					<ul>
-						<li> Nom : {{graine.nom}}</li>
-                        <li> Poids : {{graine.poid ~' '~ 'g'}}</li>
-                        <li> Couleur : {{graine.couleur}}</li>
-                        <li> Prix: {{graine.prix ~'€'}}</li>
-                        <li> Details: {{graine.description}}</li>
-					</ul>
+			<h3>
+				Informations:
+			</h3>
+			<ul>
+				<li>
+					Nom :
+					{{graine.nom}}</li>
+				<li>
+					Poids :
+					{{graine.poid ~' '~ 'g'}}</li>
+				<li>
+					Couleur :
+					{{graine.couleur}}</li>
+				<li>
+					Prix:
+					{{graine.prix ~'€'}}</li>
+				<li>
+					Details:
+					{{graine.description}}</li>
+				<li>Image :
+					<img src="{{ vich_uploader_asset(graine, 'imageFile') }}" alt="{{ graine.nom }}"/></li>
+				{# <li> Dernière mise a jour :{{graine.updated_at}}</li> #}
+			</ul>
 
-				{% endblock %} 
+		{% endblock %}

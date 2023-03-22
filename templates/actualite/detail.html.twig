@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block body %}
+	<style>
+
+		img {
+			width: 555px;
+			height: 250px;
+		}
+	</style>
+
 
 	<h2>
 		{{actualite.nom}}
@@ -12,6 +20,9 @@
 
 
 			<ul>
+
+				<li>Image :
+					<img src="{{ vich_uploader_asset(actualite, 'imageFile') }}" alt="{{ actualite.nom }}"/></li>
 				<li>
 					Nom :
 					{{actualite.nom}}</li>
