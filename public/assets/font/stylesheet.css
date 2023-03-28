@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Francesco';
+    src: url('Francesco-Regular.woff2') format('woff2'),
+        url('Francesco-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

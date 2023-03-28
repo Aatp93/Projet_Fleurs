@@ -1,6 +1,21 @@
 h1 {
-    background-color: aqua;
-    font-size: 55px;
+  font-size: 100px;
 }
 
+body {
+  background-color: bisque;
+}
 
+img {
+  width: 255px;
+  height: 300px;
+}
+
+li {
+  list-style-type: none;
+ 
+}
+
+body {
+  background-color:palegreen
+}

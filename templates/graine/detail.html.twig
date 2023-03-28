@@ -1,47 +1,69 @@
 {% extends 'base.html.twig' %}
+{% block stylesheet %}
+	<link rel="stylesheet" href="{{ asset('assets/css/detail.graine.css') }}">
+{% endblock %}
 
 {% block title %}
 	{{graine.nom}}
 {% endblock %}
 
 {% block body %}
-	<style>
-
-		img {
-			width: 255px;
-			height:300px;
-		}
-
-		
-	</style>
 
 
-	<h2>
-		{{graine.nom}}
+	<div class="container-sm text-center">
+
 		<h2>
+			{{graine.nom}}
+			<h2>
 
-			<h3>
-				Informations:
-			</h3>
-			<ul>
-				<li>
-					Nom :
-					{{graine.nom}}</li>
-				<li>
-					Poids :
-					{{graine.poid ~' '~ 'g'}}</li>
-				<li>
-					Couleur :
-					{{graine.couleur}}</li>
-				<li>
-					Prix:
-					{{graine.prix ~'€'}}</li>
-				<li>
-					Details:
-					{{graine.description}}</li>
-				<li>Image :
-					<img src="{{ vich_uploader_asset(graine, 'imageFile') }}" alt="{{ graine.nom }}"/></li>
-				{# <li> Dernière mise a jour :{{graine.updated_at}}</li> #}
-			</ul>
+				
 
-		{% endblock %}
+				<div class="row">
+					<div class="col-6">
+						<img src="{{ vich_uploader_asset(graine, 'imageFile') }}" alt="{{ graine.nom }}"/>
+					
+					</div>
+
+					<div class="col align-self-center">
+						
+							<h3>
+								Informations:
+							</h3>
+						
+							<h5>
+
+								Poids sachet :
+								{{graine.poid ~' '~ 'g'}}
+
+							</h5>
+
+							<h5>
+
+								Couleur :
+								{{graine.couleur}}
+
+							</h5>
+
+							<h5>
+
+								Prix :
+								{{graine.prix ~'€'}}
+
+							</h5>
+
+							<h5>
+
+								Details :
+								{{graine.description}}
+
+							</h5>
+						
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+
+	{% endblock %}

@@ -13,12 +13,12 @@ class GraineFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
 
         $graine = new Graine();
-        $graine->setNom($faker->word());
+        $graine->setNom($faker->word(2));
         $graine->setPoid($faker->randomFloat(1,10,15));
-        $graine->setCouleur($faker->word());
+        $graine->setCouleur($faker->safeColorName());
         $graine->setDescription($faker->paragraph());
         $graine->setPrix($faker->randomFloat(1,20,30));
         $graine->setImage('bleuet.jpg');

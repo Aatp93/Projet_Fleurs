@@ -21,13 +21,13 @@
 		{% endblock %}
 	</head>
 	<body>
-		{% include './partials/navbar.html.twig' %}
+	<nav>	{% include './partials/navbar.html.twig' %} </nav> 
 
-		{% block body %}
-					
-					{% endblock %}
+		{% block body %}{% endblock %}
 
-		{% include './partials/footer.html.twig' %}
 
 	</body>
+	<footer>
+	{% include './partials/footer.html.twig' %}
+	</footer>
 </html>

@@ -5,46 +5,37 @@
 
 		img {
 			width: 155px;
-			height:155px;
+			height: 155px;
 		}
-
 	</style>
 
 
+	<div class="container-fluid text-left">
+		<h2 class="text-center">
+			Nos graines
+		</h2>
+		<div class="row">
+			{% for  graines in graine  %}
+				{# <div class="col"> #}
+					<div class="card mt-3 ms-4 " style="max-width: 18rem;">
+						<img class="card-img-top" src="{{ vich_uploader_asset(graines, 'imageFile') }}"/>
+						<div class="card-boby">
+							<h4 class="card-title text-center">
+								<a href="{{ path('graine_detail' , {id:graines.id})}}">{{graines.nom}}</a>
+							</h4>
+							<h5>
+								Couleur de la fleur :
+								{{graines.couleur}}</h5>
+							<h5>Prix{{graines.prix}}€</h5>
+							<h5>
+								<a class="text-center" href="{{ path('graine_detail' , {id:graines.id})}}">Détails</a>
+							</h5>
+						</div>
+					</div>
 
 
-
-	{% for  graines in graine  %}
-		<h2>
-			<a href="{{ path('graine_detail' , {id:graines.id})}}">
-				{{graines.nom}}
-			</a>
-
-			<h2>
-				<h3>
-					Informations:
-				</h3>
-				<ul>
-					<li>
-						Nom :
-						{{graines.nom}}</li>
-					<li>
-						Poids :
-						{{graines.poid ~' '~ 'g'}}</li>
-					<li>
-						Couleur :
-						{{graines.couleur}}</li>
-					<li>
-						Prix:
-						{{graines.prix ~'€'}}</li>
-					<li>
-						Details:
-						 {{graines.description}}</li>
-					
-						<li>Image : <img src="{{ vich_uploader_asset(graines, 'imageFile') }}" /></li>
-					
-						
-				</ul>
-
+				{# </div> #}
 			{% endfor %}
-		{% endblock %}
+		</div>
+	</div>
+{% endblock %}
