@@ -21,7 +21,7 @@ class Commande
     #[ORM\ManyToOne(inversedBy: 'commandes')]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Panier::class)]
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Panier::class )]
     private Collection $panier;
 
     public function __construct()

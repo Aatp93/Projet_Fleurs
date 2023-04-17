@@ -7,29 +7,33 @@
 {% block body %}
 	<style>
 
-		img {
-			width: 555px;
+		.img-fluid {
+			width: 655px;
 			height: 250px;
+		}
+
+		h2 {
+			 background-color:  #04B45F;
+			 text-decoration: none;
+			 border-radius:10px;
 		}
 	</style>
 
+	<div class="container-fluid">
+		<div class="row my-3 mx-3 ">
 
-	<h2>
-		{{actualite.nom}}
-		<h2>
+			<h2 class="text-center">
+				{{actualite.nom}}
+				<h2></div>
 
+				
+					<div class="d-flex justify-content-center my-2 ">
+						<img class="img-fluid" src="{{ vich_uploader_asset(actualite, 'imageFile') }}" alt="{{ actualite.nom }}"/></li>
+				</div>
+			<p>	
+				{{actualite.description}}
+				</p> 
+			</div>
 
-			<ul>
-
-				<li>Image :
-					<img src="{{ vich_uploader_asset(actualite, 'imageFile') }}" alt="{{ actualite.nom }}"/></li>
-				<li>
-					Nom :
-					{{actualite.nom}}</li>
-				<li>
-					Description:
-					{{actualite.description}}</li>
-
-			</ul>
-
-		{% endblock %}
+		</div>
+	{% endblock %}

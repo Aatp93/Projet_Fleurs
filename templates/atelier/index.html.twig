@@ -1,15 +1,79 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Nos ateliers!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Nos ateliers </h1>
+	<style>
 
-  
+		.img-fluid {
+			width: 565px;
+			height: 360px;
+		}
+
+		h2 {
+			 background-color:  #04B45F;
+			 text-decoration: none;
+			 border-radius:10px;
+		}
+
+		a {
+			
+			text-decoration: none; 
+			color: black; 
+		}
+
+		.btn-custom {
+			background-color:  #04B45F;
+		}
+
+	</style>
+
+	<div class="container-fluid text-left">
+		<div class="row text-left my-4 mx-4">
+			<h2 class="text-center">
+			<i class="fas fa-book-open"></i>	Nos ateliers de la saison </h2>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur natus omnis autem, aliquam dolorem pariatur ratione? Accusantium eveniet aut pariatur debitis sed, et aliquam laboriosam ab eum assumenda error. Saepe.
+			</p>
+		</div>
+
+
+		<div class="row my-5 mx-4">
+			{% for  ateliers in atelier  %}
+				<h2 class="text-center my-3">
+					<a href="{{ path('atelier_detail' , {id:ateliers.id})}}">
+				ATELIER DEFENSE DES JARDINS CONTRE CHAT SAUVAGES: {{ateliers.nom}}</a>
+				</h2>
+
+				
+					<div class="row my-3 mx-4 ">
+						<div class="col-6">
+							
+								<img class="img-fluid" src="{{ vich_uploader_asset(ateliers, 'imageFile') }}" alt="{{ ateliers.nom }}"/>
+							
+						</div>
+						<div class="col-6 my-4  align-self-center">
+							<h3>
+								ATELIER DEFENSE DES JARDINS CONTRE CHAT SAUVAGES :
+								{{ateliers.nom}}</h3>
+							<h5>
+							<i class="fas fa-calendar "> </i> 
+								{{ateliers.date|date('d-m-Y')}}</h5>
+
+							<h5 class="justify-center">
+							<i class="fas fa-file-lines"> </i> 
+								{{ateliers.description}}</h5>
+							
+							<h4> 
+								<a class="btn-custom btn" href="{{ path('atelier_detail' , {id:ateliers.id})}}">
+									Détails</a>
+							</h4> 
+
+						</div>
+
+
+					
+				{% endfor %}
+			</div>
+		</div>
+
+	</div>
 {% endblock %}

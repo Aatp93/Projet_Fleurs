@@ -2,6 +2,148 @@
 
 
 {% block body %}
-<h1> Salut </h1> 
+	<style>
+		body {
+			background-color: #f7ffec;
+		}
 
-{% endblock %}
+		.img-fluid {
+			width: 655px;
+			height: 355px;
+		}
+
+		.card-img-top {
+
+			width: 155px;
+			height: 155px;
+		}
+
+		h3 {
+			background-color: #04B45F;
+			color: black;
+			border-radius: 10px;
+		}
+
+		
+		a {
+			
+			text-decoration: none; 
+			color: black; 
+		}
+
+		.btn-custom {
+			background-color:  #04B45F;
+		}
+	</style>
+
+	<div class="container-fluid my-3 mx-3">
+		<div class="row my-3 ">
+
+			<h3 class="text-center">
+				Des graines locales cultivées dans le respect du vivant et des saisons
+			</h3>
+
+		</div>
+
+		<div class="row mx-auto my-3">
+			<div class="col "></div>
+			<div class="col-8 ">
+				<div class="d-flex justify-content-center ">
+					<img class="img-fluid tx-3 mx-3" src="/assets/pictures/jardinpng.png"></img>
+			</div>
+			<p>Les fleurs est un projet  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem iusto praesentium perferendis quod ex? Ducimus temporibus reprehenderit expedita rem nobis vel sit dolorum labore saepe impedit! Labore ex amet enim. adipisicing elit. Laudantium quos ipsam expedita, placeat perferendis eveniet error ea impedit distinctio libero. Cupiditate possimus voluptatibus eveniet deserunt, quisquam minus repellat molestiae magni.
+												                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, nulla non nostrum omnis autem laboriosam iure vero maxime, similique qui est accusamus unde voluptas quae cupiditate, cum dignissimos incidunt totam?
+			</p>
+			<p></p>
+		</div>
+		<div class="col "></div>
+	</div>
+
+	<div class="row my-3">
+
+		<div class="col-8 my-3">
+			<h3 class="text-center">
+				<i class="fas fa-newspaper"></i>
+				Quoi de neuf a la ferme?
+			</h3>
+			<h5 class="text-center">
+				{{actualite.nom}}
+			</h5>
+			<div class="d-flex justify-content-center">
+				<img class="img-fluid" src="{{ vich_uploader_asset(actualite, 'imageFile') }}" alt="{{ actualite.nom }}"/>
+			</div>
+			<p>
+				{{actualite.description}}</p>
+		</div>
+		<div class="col-4 my-3 align-self-center">
+			<h3 class="text-center">
+				<i class="fas fa-leaf"></i>
+				Notre dèrniere graine
+			</h3>
+			<div class="card mt-3 ms-5 " style="max-width: 19rem; max-height: 19rem;">
+				<img class="card-img-top mx-auto" src="{{ vich_uploader_asset(lastGraine, 'imageFile') }}"/>
+				<div class="card-boby">
+					<h5 class="card-title text-center">
+						<a href="{{ path('graine_detail' , {id:graine.id})}}">{{lastGraine.nom}}</a>
+					</h5>
+					<p>
+						Saison de plantation : 
+						{{lastGraine.saison}}</p>
+					<p>Prix:
+						{{lastGraine.prix}}€</p>
+					<p>
+						<a class="text-center" href="{{ path('graine_detail' , {id:lastGraine.id})}}">Détails</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row my-3 ">
+			<div class="col-4 my-3 align-self-center ">
+				<h3 class="text-center">
+					<i class="fas fa-seedling"></i>
+					Decouvrez nos graines
+				</h3>
+				<div class="card mt-3 ms-5 " style="max-width: 19rem; max-height: 19rem;">
+					<img class="card-img-top mx-auto" src="{{ vich_uploader_asset(graine, 'imageFile') }}"/>
+					<div class="card-boby">
+						<h5 class="card-title text-center">
+							<a href="{{ path('graine_detail' , {id:graine.id})}}">{{graine.nom}}</a>
+						</h5>
+						<p>
+							Saison de plantation :
+							{{graine.saison}}</p>
+						<p>Prix:
+							{{graine.prix}}€</p>
+						<p>
+							<a class="text-center" href="{{ path('graine_detail' , {id:graine.id})}}">Détails</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-8 my-3">
+				<h3 class="text-center">
+					<i class="fas fa-book-open"></i>
+					Venez apprendre avec nous
+				</h3>
+				<a href="{{ path('atelier_detail' , {id:atelier.id})}}">
+					<h4 class="text-center">Atelier de Permaculture :
+						{{atelier.nom}}</h4>
+				</a>
+				<div class="d-flex justify-content-center">
+					<img class="img-fluid " src="{{ vich_uploader_asset(atelier, 'imageFile') }}" alt="{{atelier.nom }}"/>
+				</div>
+				<h5 class="text-center">
+					<i class="fas fa-calendar "></i>
+					{{atelier.date|date('d-m-Y')}}</h5>
+				<h5 class="text-center">
+					<i class="fas fa-file-lines"></i>
+					<a class="text-center" href="{{ path('atelier_detail' , {id:atelier.id})}}">Détails</a>
+				</h5>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>{% endblock %}

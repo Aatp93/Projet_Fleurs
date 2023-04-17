@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre panier
+{% endblock %}
+
+{% block body %}
+
+	<style>
+		.btn {
+
+			font-size: 12px;
+			height: 20px;
+			width: 20px;
+
+
+		}
+
+		h2 {
+			 background-color:  #04B45F;
+			 text-decoration: none;
+			 border-radius:10px;
+		}
+
+	</style>
+	<div class="container-fluid">
+
+		<div class="row">
+
+			<h2 class="text-center">
+		<i class="fas fa-cart-shopping"> </i>		Votre panier 
+			</h2>
+
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Article</th>
+					<th>Prix</th>
+					<th>Quantité</th>
+					<th>Total</th>
+				
+
+				</tr>
+			</thead>
+			<tbody>
+
+
+				{% for product in detailPanier %}
+					<tr>
+						<td>
+							{{ product.graine}}
+						</td>
+						<td>
+							{{product.prix}}
+							€</td>
+						<td>
+							{{ product.quantite}}
+
+							<a class="btn" href="{{ path('panier_add', {id:product.id} )}}" role=" button">
+								<i class="fa-regular fa-plus" style="color:black;"></i>
+							</a>
+							<a class="btn" href="{{ path('panier_remove', {id:product.id} )}}" role=" button">
+								<i class="fa-solid fa-minus" style="color: black;"></i>
+							</a>
+
+
+						</td>
+						<td>
+							{{ product.quantite * product.prix}}
+							€
+						</td>
+						
+					</tr>
+
+				{% else %}
+					<tr>
+						<td colspan="5" class="text-center">
+							Votre panier est vide
+						</td>
+					</tr>
+
+				{% endfor %}
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3">Total</td>
+					<td class="text-end">{{ total }}
+						€</td>
+					<td>
+
+						<i class="bi bi-cart-x"></i>
+					</td>
+				</tr>
+					<td>  
+		<a href="{{ path(('panier_valider'))}}">			Valider votre panier </a>
+					</td> 
+			</tfoot>
+		</a>
+	</td>
+</tr></tfoot></table></div>{% endblock %}

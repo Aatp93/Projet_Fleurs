@@ -23,7 +23,7 @@ class Graine
     private ?float $poid = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $couleur = null;
+    private ?string $saison = null;
 
     #[Vich\UploadableField(mapping : 'images', fileNameProperty : 'image', size : 'imageSize')]
     private ?File $imageFile = null;
@@ -74,14 +74,14 @@ class Graine
         return $this;
     }
 
-    public function getCouleur(): ?string
+    public function getSaison(): ?string
     {
-        return $this->couleur;
+        return $this->saison;
     }
 
-    public function setCouleur(string $couleur): self
+    public function setSaison(string $saison): self
     {
-        $this->couleur = $couleur;
+        $this->saison = $saison;
 
         return $this;
     }

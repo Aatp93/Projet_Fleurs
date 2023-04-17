@@ -1,1 +1,106 @@
-<h3> test footer </h3> 
+<style> 
+
+</style> 
+<div class="container-fluid">
+
+	<footer class="text-center text-lg-start text-white mt:auto" style="	background-color:#ff66c4 ;">
+
+		<section class="d-flex justify-content-between p-4" style="	background-color:#ff66c4 ;">
+
+			<div class="me-5">
+				<span>Pour suivre les aventures de la ferme, participer à nos événements ou simplement nous encourager :</span>
+			</div>
+
+
+			<div>
+				<a href="https://www.facebook.com/profile.php?id=100082148268168" class="text-light me-4">
+					<i class="fab fa-facebook-square"></i>
+				</a>
+				<a href="https://www.instagram.com/mursafleurs/" class="text-light me-4">
+					<i class="fab fa-instagram-square"></i>
+				</a>
+			</div>
+
+		</section>
+
+		<section class="">
+			<div class="container text-center text-md-start mt-5">
+
+				<div class="row mt-3">
+
+					<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+						<h6 class="text-uppercase fw-bold">L.e.s F.l.e.u.r.s</h6>
+						<hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px"/>
+						<p>
+							Murs à Fleurs c'est le projet fou de redonner vie aux fleurs de Montreuil sur une ancienne terre horticole des Murs à Pêches, vestige d'un patrimoine en Seine-Saint-Denis .
+						</p>
+					</div>
+
+
+					<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+						<h6 class="text-uppercase fw-bold">Services</h6>
+						<hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px"/>
+						<p>
+							<a href="{{ path('graine_index')}}" class="text-white">Graines</a>
+						</p>
+						<p>
+							<a href="{{ path('atelier_index')}}" class="text-white">Ateliers</a>
+						</p>
+						<p>
+							<a href="{{ path('actualite_index')}}" class="text-white">Actualités</a>
+						</p>
+
+					</div>
+
+					<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+						<h6 class="text-uppercase fw-bold">Quelques liens</h6>
+						<hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px"/>
+						<p>
+							{% if is_granted("ROLE_CLIENT") %}
+								<a href="{{ path('profile_detail' , {id:app.user.id})}}" class="text-white">Votre compte</a>
+							</p>
+						</p>
+						<p>
+							<a href="{{ path('profile_detail' , {id:app.user.id})}}" class="text-white">Devenir Abonnée
+							</a>
+						</p>
+					{% endif %}
+					<p>
+						<a href="/public/assets/font/Mentions Légales - lesfleurs - 2023-04-04T12 27 11Z.pdf" class="text-white">Mentions legales</a>
+					</p>
+
+				</div>
+
+
+				<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+					<h6 class="text-uppercase fw-bold">Contact</h6>
+					<hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px"/>
+					<p>
+						<i class="fas fa-store mr-3"></i>
+						25 Rue des Jardins Dufour, 93100 Montreuil
+					</p>
+					<p>
+						<i class="fas fa-envelope mr-3"></i>
+						contact@mursafleurs.com</p>
+					<p>
+						<i class="fas fa-phone mr-3"></i>
+						Tel: 06 23 77 87 37</p>
+
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+	<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+		© 2020 Copyright: AFPA
+		                    
+		                        
+	</div>
+
+</footer></div>

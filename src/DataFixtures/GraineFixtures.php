@@ -18,7 +18,7 @@ class GraineFixtures extends Fixture
         $graine = new Graine();
         $graine->setNom($faker->word(2));
         $graine->setPoid($faker->randomFloat(1,10,15));
-        $graine->setCouleur($faker->safeColorName());
+        $graine->setSaison($faker->word());
         $graine->setDescription($faker->paragraph());
         $graine->setPrix($faker->randomFloat(1,20,30));
         $graine->setImage('bleuet.jpg');

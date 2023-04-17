@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+	<h2>Créez votre compte
+	</h2>
+	<section class="container-fluid">
+	<h2>Créez votre compte
+	</h2>
+		<div class="row"></div>
+
+		<div class="col">
+            <fieldset class="m-3">
+            <legend> Mes identifiants  </legend> 
+			{{ form_start(registrationForm) }}
+			{{ form_row(registrationForm.email) }}
+			{{ form_row(registrationForm.plainPassword) }}
+            </fieldset>
+            <fieldset class="m-3">
+            <legend> Mes coordonées </legend> 
+			{{ form_row(registrationForm.nom, {label: 'Nom'})}}
+			{{ form_row(registrationForm.prenom)}}
+			{{ form_row(registrationForm.adresse)}}
+			{{ form_row(registrationForm.ville)}}
+			{{ form_row(registrationForm.date_naissance,)}}
+            </fieldset> 
+
+			<button type="submit" class="btn my=3">Créez votre compte!</button>
+			{{ form_end(registrationForm) }}
+		</div>
+	{% endblock %}

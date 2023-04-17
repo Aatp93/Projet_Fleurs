@@ -10,30 +10,63 @@
 	<style>
 
 		img {
-			width: 255px;
-			height: 300px;
+			width: 555px;
+			height: 250px;
+		}
+
+
+		h2 {
+			background-color: #04B45F;
+			text-decoration: none;
+			border-radius:10px;
+		}
+		a {
+
+			text-decoration: none;
+			color: black;
+		}
+
+		.btn-custom {
+			background-color: #04B45F;
 		}
 	</style>
 
-	<h2>
-		{{atelier.nom}}
-		<h2>
 
-			<h3>
-				Details de l'atelier:
-			</h3>
-			<ul>
-				<li>Image :
-					<img src="{{ vich_uploader_asset(atelier, 'imageFile') }}" alt="{{ atelier.nom }}"/></li>
-				<li>
-					Nom :
-					{{atelier.nom}}</li>
-				<li>
-					Description:
-					{{atelier.description}}</li>
-				<li>
-					Date :
-					{{atelier.date|date('d-m-Y')}}</li>
-			</ul>
+	<div class="container-fluid text-left ">
+		<div class="row my-3 mx-3 ">
+			<h2 class="text-center">
+				<a href="{{ path('atelier_detail' , {id:atelier.id})}}">
+					ATELIER DEFENSE DES JARDINS CONTRE CHAT SAUVAGES:
+					{{atelier.nom}}</a>
+			</h2>
+			<div class="row my-3 mx-3 ">
+				<div class="col">
 
-		{% endblock %}
+					<img class="img-fluid" src="{{ vich_uploader_asset(atelier, 'imageFile') }}" alt="{{ atelier.nom }}"/>
+
+				</div>
+				<div class="col my-3 align-self-center">
+					<h3>
+						ATELIER DEFENSE DES JARDINS CONTRE CHAT SAUVAGES:
+						{{atelier.nom}}</h3>
+					<h5>
+						<i class="fas fa-calendar "></i>
+
+						{{atelier.date|date('d-m-Y')}}</h5>
+
+					<p>
+						<i class="fas fa-file-lines"></i>
+						{{atelier.description}}
+					</p>
+
+					{% if is_granted("ROLE_ABONNE") %}
+						<a class="btn-custom btn" href="{{ path('atelier_reserve' , {id:atelier.id})}}">
+							Réserver
+						</a>
+
+					{% else %}
+						<h4>Pour reserver nos ateliers il faut être abonné.</h4>
+						
+					{% endif %}
+				</div>
+			{% endblock %}

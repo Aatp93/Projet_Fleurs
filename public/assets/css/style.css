@@ -3,19 +3,13 @@ h1 {
 }
 
 body {
-  background-color: bisque;
+  background-color:#f7ffec;
 }
 
-img {
-  width: 255px;
-  height: 300px;
-}
 
-li {
-  list-style-type: none;
- 
-}
 
-body {
-  background-color:palegreen
+footer {
+  position: absolute;
+  bottom: 10;
+  width: 100%;
 }

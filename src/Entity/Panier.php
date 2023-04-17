@@ -21,7 +21,7 @@ class Panier
     #[ORM\Column]
     private ?float $prix = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(cascade: ['persist', 'remove'] )]
     private ?Graine $graine = null;
 
     #[ORM\ManyToOne(inversedBy: 'Panier')]

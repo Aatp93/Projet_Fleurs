@@ -1,25 +1,67 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Dernieres actualitées
-{% endblock %}
-
 {% block body %}
+
 	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
+
+		.img-fluid {
+			max-width: 600px; 
 		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
+
+		a {
+			
+			text-decoration: none; 
+			color: black; 
 		}
+
+		
+		h2 {
+			 background-color:  #04B45F;
+			 text-decoration: none;
+			 border-radius:10px;
+		}
+
+		h5 {
+			 font-weight: bold;
+		}
+		
+
+
 	</style>
 
-	<div class="example-wrapper">
-		<h1>Nos dernieres actualitées
-		</h1>
+	<div class="container-fluid text-left border">
+		<div class="row-md text-left my-3 mx-3 border">
+			<h2 class="text-center">
+		<i class="fas fa-newspaper"></i>		Nos dernières actualités 
+			</h2>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur natus omnis autem, aliquam dolorem pariatur ratione? Accusantium eveniet aut pariatur debitis sed, et aliquam laboriosam ab eum assumenda error. Saepe.
+			</p>
+		</div>
+
+		<div class="row my-3 mx-3 ">
+			{% for  actualites in actualite  %}
 
 
-	{% endblock %}
+				
+					<h2 class="text-center">
+						<a href="{{ path('actualite_detail', {id:actualites.id})}}">
+						{{actualites.nom}}</a>
+						</h2>
+					
+				
+
+			<div class="d-flex justify-content-center ">
+					<img class="img-fluid center-block" src="{{ vich_uploader_asset(actualites, 'imageFile') }}" alt="{{ actualites.nom }}"/>
+			</div>
+			
+
+			<p> 
+				<a href="{{ path('actualite_detail', {id:actualites.id})}}">
+				<h5> Les details : </h5>
+				</a>
+
+				{{actualites.description}}</p> 
+
+		
+	{% endfor %}
+</div></div>{% endblock %}

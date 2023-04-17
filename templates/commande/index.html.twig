@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes reservations!
+{% endblock %}
+
+{% block body %}
+	<style>
+			h2 {
+			 background-color:  #04B45F;
+			 text-decoration: none;
+			 border-radius:10px;
+		}
+	</style>
+
+
+	<div class="container-fluid">
+	<h2 class="text-center"> <i class="fas fa-cash-register"></i> Mes commandes</h2>
+	{% for commande in commandes %}
+		<hr>
+		<div class="row">
+			<div class="col-md-3">
+				<p>Commande n°: {{commande.id}}</p>
+				<p>Faite le {{commande.CreatedAt|date('d-m-Y')}}</p>
+			</div>
+			<div class="col-md-9">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Article</th>
+							<th>Prix unitaire</th>
+							<th>Quantité</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% set total_commande = 0 %}
+						{% for panier in commande.panier %}
+							<tr>
+								<td>{{panier.graine.nom}}</td>
+								<td>{{panier.graine.prix}} €</td>
+								<td>{{panier.quantite}}</td>
+								{% set total_article = panier.graine.prix * panier.quantite %}
+								<td>{{total_article}} €</td>
+								{% set total_commande = total_commande + total_article %}
+							</tr>
+						{% endfor %}
+						<tr>
+							<td colspan="3"></td>
+							<td>Total: {{total_commande}} €</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,48 +1,83 @@
 {% block nav %}
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="{{ path('app_main')}}">Home</a>
 
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav mx-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('graine_liste')}}">Graines</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('atelier_liste')}}">Ateliers</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('actualite_liste')}}">Actualités
-						</a>
-					</li>
-					{#  #}
-					{% if app.user %}
-						<li
-							class="nav-item">{# <a class="nav-link" href="{{ path('profile_detail' , {id:user.id})}}">Mon compte</a> #}
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Panier</a>
-						</li>
-						<li class="nav-item ">
-							<a class="nav-link " href="{{ path('app_logout') }}">Logout</a>
-						</li>
-					{% else %}
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_login')}}">Se connecter</a>
-						</li>
-					{% endif %}
-					<ul class="navbar-nav ms-auto">
-						{% if is_granted (["ROLE_ADMIN"]) %}
-							<li class='nav-item'>
-								<a class="nav-link" href="{{ path('admin')}}">Admin</a>
-							</li>
-						{% endif %}
-					</ul>
-				</ul>
-			</div>
+	<style>
+	
+		.nav-item {
+			background-color:#ff66c4 ;
+			font-weight: bold;
+		}
+
+	
+		.logo {
+			width: 355px;
+			height: 255px;
+		}
+
+		.container-fluid {
+			background-color:#f7ffec;
+
+		}
+
+	</style>
+	<header> 
+
+		<div class="container-fluid">
+			<nav class="navbar navbar-expand-lg">
+
+		
+				<div class="col  d-flex justify-content-center"> 
+				<a class='link' href="{{ path('app_main')}}">
+						<img class="logo" src="/assets/pictures/Green Floral Agriculture Organic Wheat Farm Logo Design.png">
+						</img> 
+				</a>
+				</div>	
+				
+					<div class="col  d-flex justify-content-around">
+						
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+								<div class="collapse navbar-collapse" id="navbarNav">
+										<ul class="navbar-nav mx-auto">
+													<li class="nav-item">
+														<a class="nav-link" href="{{ path('graine_index')}}">Graines</a>
+													</li>
+													<li class="nav-item">
+														<a class="nav-link" href="{{ path('atelier_index')}}">Ateliers</a>
+													</li>
+													<li class="nav-item">
+														<a class="nav-link" href="{{ path('actualite_index')}}">Actualités
+														</a>
+													</li>
+
+
+													{% if is_granted("ROLE_CLIENT") %}
+														<li class="nav-item">
+															<a class="nav-link" href="{{ path('profile_detail' )}}">Mon compte</a>
+														</li>
+														<li class="nav-item">
+															<a class="nav-link" href="{{path ('panier_liste')}}">Panier</a>
+														</li>
+														<li class="nav-item ">
+															<a class="nav-link " href="{{ path('app_logout') }}">Logout</a>
+														</li>
+													{% else %}
+														<li class="nav-item">
+															<a class="nav-link" href="{{ path('app_login')}}">Se connecter</a>
+														</li>
+													{% endif %}
+													<ul class="navbar-nav ms-auto">
+														{% if is_granted ("ROLE_ADMIN") %}
+															<li class='nav-item'>
+																<a class="nav-link" href="{{ path('admin')}}">Admin</a>
+															</li>
+														{% endif %}
+													</ul>
+										</ul>
+								</div>
+						</div>
+				</div>
+			</nav>
 		</div>
-	</nav>
-{% endblock %}
+	</header>
+	{% endblock %}

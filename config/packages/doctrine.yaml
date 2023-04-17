@@ -34,7 +34,9 @@ when@prod:
             result_cache_driver:
                 type: pool
                 pool: doctrine.result_cache_pool
-
+        dql:
+             numeric_functions:
+                 rand: DoctrineExtensions\Query\Mysql\Rand
     framework:
         cache:
             pools:

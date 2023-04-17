@@ -6,41 +6,87 @@
 
 {% block body %}
 
-	<h2>
-		Votre profil
-		<h2>
+<style> 
 
-			<h3>
-				Bienvenu
-				{{user.prenom}}
-				<h3>
+h2 {
+			background-color: #04B45F;
+			color: black;
+			border-radius:10px;
+		
+		}
 
-					<h3>
-						Mes informations:
-					</h3>
-					<ul>
-						<li>
-							Nom :
-							{{user.nom}}</li>
-						<li>
-							Prénom :
-							{{user.prenom}}</li>
-						<li>
-							Date de naissance :
-							{{user.dateNaissance|date('d-m-Y')}}</li>
-						<li>
-							Adresse :
-							{{user.adresse}}</li>
-						<li>
-							Ville:
-							{{user.ville}}</li>
-						<li>
-							E-mail:
-							{{user.email}}</li>
-						<li>
-							Mon statut  :
-							{{user.roles|join(',')}}</li>
+			
 
-					</ul>
+		a {
+			text-decoration: none; 
+			color:black;
+		}
+</style> 
 
+
+	<div class="container-fluid my-3 mx-4">
+		<div class="row ">
+			<h2 class="text-center">
+		<i class="	fas fa-person"> </i>	Votre profil 	 </i>	
+				<h2></div>
+				<div class="row ">
+					<div class="col ">
+							<h3>
+								Bienvenu
+								{{user.prenom}}
+								<h3>
+
+									<h3>
+						<i class="fas fa-info"> </i>				Mes informations : 
+									</h3>
+									
+										<p>
+											Nom :
+											{{user.nom}}</p>
+										<p>
+											Prénom :
+											{{user.prenom}}</p>
+										<p>
+											Date de naissance :
+											{{user.dateNaissance|date('d-m-Y')}}</p>
+										<p>
+											Adresse :
+											{{user.adresse}}</p>
+										<p>
+											Ville:
+											{{user.ville}}</li>
+										<p>
+											Email:
+											{{user.email}}</p>
+										
+										
+											{% for role in user.roles %}
+												{% if role == 'ROLE_CLIENT' and not is_granted('ROLE_ABONNE') %}
+													<p>Mon statut : Client</p>
+												{% elseif role == 'ROLE_ABONNE' %}
+													<p>Mon statut : Abonné</p>
+												{% endif %}
+											{% endfor %}
+						
+					</div> 			
+							<div class="col align-self-center">
+									{% if is_granted("ROLE_CLIENT") and not is_granted("ROLE_ABONNE") %}
+									
+										<h4 class="text-center" >
+									
+											<a  href="{{ path('profile_abonne')}}">
+												<i class="fas fa-clipboard-check" style="color:black;"></i>S'abonner  
+											</a>
+										</h4 >
+									{% endif %}
+							<br>
+							<h4 class="text-center"> 
+							<a href="{{ path('reserve_index' )}}">	<i class="fas fa-book-open"> </i>	 Mes reservations  </a> </h4>
+							<br> 
+							<h4 class="text-center">
+							<a href="{{ path('commande_liste')}}">	<i class="fas fa-cash-register"></i>	 Mes commandes   </a></h4>
+			</div>		
+				</div>
+		</div>
+	</div>
 				{% endblock %}

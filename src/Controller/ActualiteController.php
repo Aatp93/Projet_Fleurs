@@ -11,11 +11,12 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/actualite', name: 'actualite_')]
 class ActualiteController extends AbstractController
 {
-    #[Route('/', name: 'liste')]
-    public function liste(ActualiteRepository $actualiteRepository): Response
+    #[Route('/', name: 'index')]
+    public function index(ActualiteRepository $actualiteRepository): Response
     {
-        $actualite = $actualiteRepository->findAll();
-        return $this->render('actualite/liste.html.twig', [
+        
+        $actualite = $actualiteRepository->findby([], ['id' => 'DESC']);
+        return $this->render('actualite/index.html.twig', [
             'actualite' => $actualite,
         ]);
     }

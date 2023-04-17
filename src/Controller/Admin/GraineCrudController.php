@@ -26,8 +26,8 @@ class GraineCrudController extends AbstractCrudController
     {
         return [
             TextField::new('nom'),
-            TextField::new('couleur'),
-            MoneyField::new('prix')->setCurrency('EUR'),
+            TextField::new('saison'),
+            NumberField::new('prix'),
             NumberField::new('poid'),
             TextareaField::new('description'),
             TextField::new('imageFile')
